@@ -6,8 +6,9 @@ const URL = require("./models/url");
 const app = express();
 const PORT = 8001;
 
-connectToMongoDB("mongodb://localhost:27017")
-.then(()=>console.log("MongoDB Connected!"));
+connectToMongoDB("mongodb+srv://samyul2004:jh6OUXKIlO9LOXxC@cluster0.r8el1.mongodb.net/devdao")
+.then(()=>console.log("MongoDB Connected!"))
+.catch((err)=>console.log(err));
 
 app.use(express.json());
 app.use("/url",urlRoute);
@@ -30,4 +31,6 @@ app.get("/:shortId",async(req,res)=>{
 })
 
 
-app.listen(PORT,()=>`Server started at PORT no : ${PORT}`);
+app.listen(PORT,()=>{
+    console.log(`Server is running on port ${PORT}`);
+});
